@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Blaze Web App - SPA</title>
 
-  <!-- ✅ Preload important SVGs for faster loading -->
+  <!-- ✅ Preload important SVGs for instant rendering -->
   <link rel="preload" href="assets/Blaze PNG 3.svg" as="image" type="image/svg+xml">
   <link rel="preload" href="assets/moving_frame.svg" as="image" type="image/svg+xml">
 
@@ -14,12 +14,11 @@
 </head>
 <body>
 
-  <!-- ✅ INLINE LOGO SVG (No extra request, loads instantly) -->
+  <!-- HEADER -->
   <header class="top-bar">
+    <!-- ✅ LOGO (Kept as External but Preloaded) -->
     <a href="#home" class="logo-link">
-      <svg class="logo" width="100" height="50" viewBox="0 0 100 50" xmlns="http://www.w3.org/2000/svg">
-        <text x="10" y="35" font-size="35" font-family="Arial" fill="gold">BLAZE</text>
-      </svg>
+      <img src="assets/Blaze PNG 3.svg" alt="Blaze Logo" class="logo" width="150" height="auto" />
     </a>
 
     <h1 class="title">
@@ -56,22 +55,18 @@
     </div>
   </nav>
 
-  <!-- ✅ INLINE MARQUEE SVG (Loads instantly) -->
+  <!-- ✅ MARQUEE (Kept as External but Preloaded) -->
   <div class="marquee-container">
     <div class="marquee">
-      <svg class="marquee-img" width="200" height="50" viewBox="0 0 200 50" xmlns="http://www.w3.org/2000/svg">
-        <text x="10" y="35" font-size="30" font-family="Arial" fill="black">MOVING FRAME</text>
-      </svg>
-      <svg class="marquee-img" width="200" height="50" viewBox="0 0 200 50" xmlns="http://www.w3.org/2000/svg">
-        <text x="10" y="35" font-size="30" font-family="Arial" fill="black">MOVING FRAME</text>
-      </svg>
+      <img src="assets/moving_frame.svg" alt="Marquee" class="marquee-img" width="200" height="auto" />
+      <img src="assets/moving_frame.svg" alt="Marquee" class="marquee-img" width="200" height="auto" />
     </div>
   </div>
 
   <!-- MAIN CONTENT AREA (SPA partials load here) -->
   <main id="app"></main>
 
-  <!-- ✅ Defer JavaScript for better performance -->
+  <!-- ✅ Defer JavaScript for non-blocking rendering -->
   <script defer src="script.js"></script>
 
 </body>
