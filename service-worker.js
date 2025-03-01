@@ -1,11 +1,11 @@
-const CACHE_NAME = 'blaze-cache-v2'; // Increment cache version
+const CACHE_NAME = 'blaze-cache-v3';
 const urlsToCache = [
     '/',
     '/index.html',
     '/styles.css',
     '/script.js',
-    '/images/logo.svg',
-    '/images/menu-icon.svg'
+    '/assets/Blaze PNG 3.svg',
+    '/assets/moving_frame.svg'
 ];
 
 self.addEventListener('install', event => {
@@ -14,10 +14,9 @@ self.addEventListener('install', event => {
             return cache.addAll(urlsToCache);
         })
     );
-    self.skipWaiting(); // Immediately activate new service worker
+    self.skipWaiting(); // Activate new service worker immediately
 });
 
-// Delete old caches when a new service worker is activated
 self.addEventListener('activate', event => {
     event.waitUntil(
         caches.keys().then(cacheNames => {
@@ -30,7 +29,7 @@ self.addEventListener('activate', event => {
             );
         })
     );
-    self.clients.claim(); // Take control of open pages immediately
+    self.clients.claim();
 });
 
 self.addEventListener('fetch', event => {
