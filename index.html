@@ -5,18 +5,23 @@
   <!-- Mobile-friendly scaling -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Blaze Web App - SPA</title>
+
+  <!-- ✅ Preload important SVGs for faster loading -->
+  <link rel="preload" href="assets/Blaze PNG 3.svg" as="image" type="image/svg+xml">
+  <link rel="preload" href="assets/moving_frame.svg" as="image" type="image/svg+xml">
+
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
-  <!-- HEADER -->
+  <!-- ✅ INLINE LOGO SVG (No extra request, loads instantly) -->
   <header class="top-bar">
-    <!-- CLICKABLE LOGO (links to #home) -->
     <a href="#home" class="logo-link">
-      <img src="assets/Blaze PNG 3.svg" alt="Blaze Logo" class="logo" />
+      <svg class="logo" width="100" height="50" viewBox="0 0 100 50" xmlns="http://www.w3.org/2000/svg">
+        <text x="10" y="35" font-size="35" font-family="Arial" fill="gold">BLAZE</text>
+      </svg>
     </a>
 
-    <!-- FLAVOURS THAT FLIRT in Beautiful Freak Bold -->
     <h1 class="title">
       <span class="dash">-</span>
       <span class="gold-text">FLAVOURS</span>
@@ -51,18 +56,22 @@
     </div>
   </nav>
 
-  <!-- MARQUEE (SVG repeated for seamless infinite loop) -->
+  <!-- ✅ INLINE MARQUEE SVG (Loads instantly) -->
   <div class="marquee-container">
     <div class="marquee">
-      <img src="assets/moving_frame.svg" alt="Marquee" class="marquee-img" />
-      <img src="assets/moving_frame.svg" alt="Marquee" class="marquee-img" />
+      <svg class="marquee-img" width="200" height="50" viewBox="0 0 200 50" xmlns="http://www.w3.org/2000/svg">
+        <text x="10" y="35" font-size="30" font-family="Arial" fill="black">MOVING FRAME</text>
+      </svg>
+      <svg class="marquee-img" width="200" height="50" viewBox="0 0 200 50" xmlns="http://www.w3.org/2000/svg">
+        <text x="10" y="35" font-size="30" font-family="Arial" fill="black">MOVING FRAME</text>
+      </svg>
     </div>
   </div>
 
   <!-- MAIN CONTENT AREA (SPA partials load here) -->
   <main id="app"></main>
 
-  <!-- ✅ Script now uses "defer" to avoid blocking rendering -->
+  <!-- ✅ Defer JavaScript for better performance -->
   <script defer src="script.js"></script>
 
 </body>
