@@ -1,0 +1,16 @@
+<!-- pages/order-online.html -->
+<section class="order-online-container">
+  <div class="redirect-message">
+    <h2>Redirecting to our online ordering partner...</h2>
+    <p>If you are not automatically redirected, please <a href="https://www.zomato.com" target="_blank" rel="noopener">click here</a> to visit Zomato.</p>
+  </div>
+  
+  <script>
+    // Redirect to Zomato after a short delay
+    setTimeout(function() {
+      window.open('https://www.zomato.com', '_blank');
+      // Go back to home page
+      window.location.hash = '#home';
+    }, 1500);
+  </script>
+</section>

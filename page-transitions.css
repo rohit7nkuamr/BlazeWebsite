@@ -1,0 +1,85 @@
+/* 
+ * Basic CSS Page Transition - Álvaro Style
+ * This implements a wipe effect transition between pages
+ */
+
+/* Page transition overlay */
+.page-transition-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #9D1C20; /* Blaze red color */
+  transform: translateX(-100%);
+  z-index: 9999;
+  pointer-events: none;
+}
+
+/* Add a second overlay with delay for layered effect */
+.page-transition-overlay:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #F6B319; /* Blaze gold color */
+  transform: translateX(-100%);
+  transition: transform 0.4s ease-in-out 0.2s;
+}
+
+/* Transition states */
+.page-transition-active .page-transition-overlay {
+  transform: translateX(0);
+  transition: transform 0.4s ease-in-out;
+}
+
+.page-transition-active .page-transition-overlay:after {
+  transform: translateX(0);
+}
+
+.page-transition-exit .page-transition-overlay {
+  transform: translateX(100%);
+  transition: transform 0.4s ease-in-out 0.2s;
+}
+
+.page-transition-exit .page-transition-overlay:after {
+  transform: translateX(100%);
+  transition: transform 0.4s ease-in-out;
+}
+
+/* Menu specific transitions */
+.menu-container {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+}
+
+.menu-container.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Horizontal nav transitions */
+.horizontal-nav-item {
+  position: relative;
+  overflow: hidden;
+}
+
+.horizontal-nav-item:before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #F6B319;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+}
+
+.horizontal-nav-item:hover:before,
+.horizontal-nav-item.active:before {
+  transform: translateX(0);
+}

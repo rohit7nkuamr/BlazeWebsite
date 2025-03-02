@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Mobile-friendly scaling -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blaze Web App - SPA</title>
+  <meta name="description" content="Blaze Restaurant - Flavours That Flirt. Gourmet burgers, wraps, pasta and more.">
+  <meta name="theme-color" content="#9d1c20">
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="assets/icons/icon-192x192.png">
+  <!-- Preload critical assets -->
+  <link rel="preload" href="styles.css" as="style">
+  <link rel="preload" href="dissolve-animations.css" as="style">
+  <link rel="preload" href="script.js" as="script">
+  <link rel="preload" href="dissolve-animation.js" as="script">
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="swipe-animations.css" />
+  <link rel="stylesheet" href="3d-animations.css" />
+  <link rel="stylesheet" href="menu-button-fix.css" />
+  <link rel="stylesheet" href="dissolve-animations.css" />
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="top-bar">
+    <!-- CLICKABLE LOGO (links to #home) -->
+    <a href="#home" class="logo-link">
+      <img data-src="assets/Blaze PNG 3.svg" alt="Blaze Logo" class="logo" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjOWQxYzIwIi8+PC9zdmc+" />
+    </a>
+
+    <!-- FLAVOURS THAT FLIRT in Beautiful Freak Bold -->
+    <h1 class="title">
+      <span class="dash">-</span>
+      <span class="gold-text">FLAVOURS</span>
+      <span class="black-text">THAT</span>
+      <span class="gold-text">FLIRT</span>
+      <span class="dash">-</span>
+    </h1>
+
+    <!-- HAMBURGER ICON -->
+    <div class="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </header>
+
+  <!-- SIDE NAVIGATION -->
+  <nav class="side-nav">
+    <ul>
+      <li><a href="#home">HOME</a></li>
+      <li><a href="#hours-location">HOURS &amp; LOCATION</a></li>
+      <li><a href="#about">ABOUT</a></li>
+      <li><a href="https://www.zomato.com" target="_blank" rel="noopener">ORDER ONLINE</a></li>
+      <li><a href="tel:+919711313434">(+91) 9711313434</a></li>
+      <li><a href="#contact">CONTACT</a></li>
+    </ul>
+    <hr />
+    <div class="powered-by">POWERED BY TEAM RENT & RIDE</div>
+    <div class="side-nav-buttons">
+      <a href="https://www.zomato.com" target="_blank" rel="noopener" class="order-btn">ORDER ONLINE</a>
+      <a href="tel:+919711313434" class="call-btn">CALL (+91) 9711313434</a>
+    </div>
+  </nav>
+
+  <!-- MARQUEE (SVG repeated for seamless infinite loop) -->
+  <div class="marquee-container">
+    <div class="marquee">
+      <img data-src="assets/moving_frame.svg" alt="Marquee" class="marquee-img" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjOWQxYzIwIi8+PC9zdmc+" />
+      <img data-src="assets/moving_frame.svg" alt="Marquee" class="marquee-img" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjOWQxYzIwIi8+PC9zdmc+" />
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT AREA (SPA partials load here) -->
+  <main id="app"></main>
+
+  <!-- App Shell Loading Indicator -->
+  <div id="loading-indicator" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 9999;">
+    <div style="width: 50px; height: 50px; border: 5px solid #f3f3f3; border-top: 5px solid #9d1c20; border-radius: 50%; animation: spin 1s linear infinite;"></div>
+  </div>
+  
+  <style>
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+
+  <script src="script.js"></script>
+  <script src="3d-animation.js"></script>
+  <script src="dissolve-animation.js"></script>
+  
+  <noscript>
+    <div style="padding: 20px; text-align: center; background-color: #f8d7da; color: #721c24; margin: 20px;">
+      JavaScript is required to use this application. Please enable JavaScript in your browser settings.
+    </div>
+  </noscript>
+</body>
+</html>
