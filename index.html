@@ -9,11 +9,13 @@
   <meta name="theme-color" content="#9d1c20">
   <link rel="manifest" href="manifest.json">
   <link rel="apple-touch-icon" href="assets/icons/icon-192x192.png">
+  
   <!-- Preload critical assets -->
   <link rel="preload" href="styles.css" as="style">
   <link rel="preload" href="dissolve-animations.css" as="style">
   <link rel="preload" href="script.js" as="script">
   <link rel="preload" href="dissolve-animation.js" as="script">
+
   <!-- Stylesheets -->
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="swipe-animations.css" />
@@ -27,7 +29,8 @@
   <header class="top-bar">
     <!-- CLICKABLE LOGO (links to #home) -->
     <a href="#home" class="logo-link">
-      <img data-src="assets/Blaze PNG 3.svg" alt="Blaze Logo" class="logo" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjOWQxYzIwIi8+PC9zdmc+" />
+      <img data-src="assets/Blaze PNG 3.svg" alt="Blaze Logo" class="logo" 
+           src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjOWQxYzIwIi8+PC9zdmc+" />
     </a>
 
     <!-- FLAVOURS THAT FLIRT in Beautiful Freak Bold -->
@@ -68,8 +71,12 @@
   <!-- MARQUEE (SVG repeated for seamless infinite loop) -->
   <div class="marquee-container">
     <div class="marquee">
-      <img data-src="assets/moving_frame.svg" alt="Marquee" class="marquee-img" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjOWQxYzIwIi8+PC9zdmc+" />
-      <img data-src="assets/moving_frame.svg" alt="Marquee" class="marquee-img" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjOWQxYzIwIi8+PC9zdmc+" />
+      <img data-src="assets/moving_frame.svg" alt="Marquee" class="marquee-img" 
+           src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjOWQxYzIwIi8+PC9zdmc+" 
+           loading="lazy" />
+      <img data-src="assets/moving_frame.svg" alt="Marquee" class="marquee-img" 
+           src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjOWQxYzIwIi8+PC9zdmc+" 
+           loading="lazy" />
     </div>
   </div>
 
@@ -88,9 +95,10 @@
     }
   </style>
 
-  <script src="script.js"></script>
-  <script src="3d-animation.js"></script>
-  <script src="dissolve-animation.js"></script>
+  <!-- Defer scripts to avoid render-blocking -->
+  <script defer src="script.js"></script>
+  <script defer src="3d-animation.js"></script>
+  <script defer src="dissolve-animation.js"></script>
   
   <noscript>
     <div style="padding: 20px; text-align: center; background-color: #f8d7da; color: #721c24; margin: 20px;">
