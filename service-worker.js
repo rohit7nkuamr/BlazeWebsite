@@ -3,6 +3,7 @@ const CACHE_NAME = 'blaze-restaurant-cache-v1';
 const urlsToCache = [
   '/',
   '/index.html',
+  '/offline.html', // Offline fallback page
   '/pages/menu.html',
   '/pages/about.html',
   '/pages/contact.html',
@@ -23,10 +24,10 @@ self.addEventListener('install', event => {
         return cache.addAll(urlsToCache);
       })
   );
-  self.skipWaiting(); // Activate new service worker immediately
+  self.skipWaiting();
 });
 
-// Activate event - clean up old caches and take control of clients immediately
+// Activate event - clean up old caches and claim clients
 self.addEventListener('activate', event => {
   const cacheWhitelist = [CACHE_NAME];
   event.waitUntil(
@@ -44,7 +45,7 @@ self.addEventListener('activate', event => {
   self.clients.claim();
 });
 
-// Fetch event - serve cached assets first, then update the cache with network response
+// Fetch event - serve cached assets first; fallback to offline page if necessary
 self.addEventListener('fetch', event => {
   event.respondWith(
     caches.match(event.request)
@@ -62,7 +63,7 @@ self.addEventListener('fetch', event => {
             return networkResponse;
           }
           
-          // Clone the response before caching
+          // Clone the response before caching it
           const responseToCache = networkResponse.clone();
           caches.open(CACHE_NAME)
             .then(cache => {
@@ -76,27 +77,25 @@ self.addEventListener('fetch', event => {
         });
       })
       .catch(() => {
-        // Optionally, return a fallback page here if both cache and network fail
-        // return caches.match('/offline.html');
+        // If both cache and network fail, return the offline fallback page
+        return caches.match('/offline.html');
       })
   );
 });
 
-// Background sync for offline actions
+// Background sync for offline actions (optional)
 self.addEventListener('sync', event => {
   if (event.tag === 'sync-data') {
     event.waitUntil(syncData());
   }
 });
 
-// Function to sync data when back online
 function syncData() {
-  // Add your logic here for syncing data queued while offline.
-  // For now, we simply resolve the promise.
+  // Add your logic for syncing data queued while offline.
   return Promise.resolve();
 }
 
-// Handle push notifications
+// Handle push notifications (optional)
 self.addEventListener('push', event => {
   const data = event.data ? event.data.text() : 'No payload';
   const title = 'Blaze Restaurant';
