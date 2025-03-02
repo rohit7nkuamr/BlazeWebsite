@@ -15,7 +15,7 @@
   <link rel="preload" href="dissolve-animations.css" as="style">
   <link rel="preload" href="script.js" as="script">
   <link rel="preload" href="dissolve-animation.js" as="script">
-
+  
   <!-- Stylesheets -->
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="swipe-animations.css" />
@@ -83,7 +83,7 @@
   <!-- MAIN CONTENT AREA (SPA partials load here) -->
   <main id="app"></main>
 
-  <!-- App Shell Loading Indicator -->
+  <!-- App Shell Loading Indicator (if needed) -->
   <div id="loading-indicator" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 9999;">
     <div style="width: 50px; height: 50px; border: 5px solid #f3f3f3; border-top: 5px solid #9d1c20; border-radius: 50%; animation: spin 1s linear infinite;"></div>
   </div>
@@ -105,5 +105,16 @@
       JavaScript is required to use this application. Please enable JavaScript in your browser settings.
     </div>
   </noscript>
+
+  <!-- Register the Service Worker -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js')
+          .then(reg => console.log('[SW] Registered:', reg.scope))
+          .catch(err => console.error('[SW] Registration failed:', err));
+      });
+    }
+  </script>
 </body>
 </html>
