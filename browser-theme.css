@@ -1,0 +1,50 @@
+/* Cross-browser theming with feature detection */
+
+/* Define theme color variables for all browsers */
+:root {
+  --theme-color: #9d1c20;
+  --theme-color-light: #c12228;
+  --theme-color-dark: #8a1a1e;
+}
+
+/* Base theming for all browsers */
+body {
+  /* Subtle background tint that won't interfere with design */
+  background-color: rgba(255, 255, 255, 0.99);
+}
+
+/* Firefox-specific scrollbar styling using feature detection */
+@supports (scrollbar-color: auto) {
+  * {
+    scrollbar-color: var(--theme-color) #f1f1f1;
+    scrollbar-width: thin;
+  }
+}
+
+/* Opera-specific styling using feature detection */
+@supports (-o-transform: none) or (-webkit-text-size-adjust: none) {
+  /* Opera-specific styles if needed */
+  .opera-specific-element {
+    border-color: var(--theme-color);
+  }
+}
+
+/* Edge and IE specific styling */
+@supports (-ms-ime-align: auto) or (-ms-accelerator: true) {
+  /* Edge/IE specific styles if needed */
+  .ms-specific-element {
+    border-color: var(--theme-color);
+  }
+}
+
+/* Add a subtle themed border to the top of the page for browsers without theme-color support */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background-color: var(--theme-color);
+  z-index: 9999;
+}

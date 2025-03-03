@@ -1,0 +1,120 @@
+/* Enhanced Swipe Navigation Styles */
+.menu-container {
+  position: relative;
+  overflow: hidden;
+  touch-action: pan-y; /* Allow vertical scrolling but capture horizontal swipes */
+}
+
+/* Animation overlay for smooth transitions */
+.swipe-animation-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 100;
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+}
+
+.next-section-preview,
+.prev-section-preview {
+  color: #F6B319;
+  font-family: 'BeautifulFreakBold', Arial, sans-serif;
+  font-size: 28px;
+  text-align: center;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(246, 179, 25, 0.4);
+  animation: pulse 1.5s infinite alternate;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); text-shadow: 0 0 5px rgba(246, 179, 25, 0.5); }
+  100% { transform: scale(1.05); text-shadow: 0 0 15px rgba(246, 179, 25, 0.8); }
+}
+
+.swipe-animation-overlay.next-section {
+  justify-content: flex-end;
+  padding-right: 40px;
+}
+
+.swipe-animation-overlay.prev-section {
+  justify-content: flex-start;
+  padding-left: 40px;
+}
+
+/* Visual indicators for swipe direction */
+.menu-container::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 50px;
+  height: 50px;
+  background-color: rgba(246, 179, 25, 0.8);
+  border-radius: 50%;
+  transform: translateY(-50%) scale(0);
+  opacity: 0;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  pointer-events: none;
+  z-index: 10;
+  box-shadow: 0 0 15px rgba(246, 179, 25, 0.6);
+}
+
+.menu-container.swipe-left::after {
+  right: 20px;
+  transform: translateY(-50%) scale(1);
+  opacity: 1;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 30px;
+}
+
+.menu-container.swipe-right::after {
+  left: 20px;
+  transform: translateY(-50%) scale(1);
+  opacity: 1;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 30px;
+}
+
+/* Initial swipe hint animation */
+@keyframes swipeHint {
+  0% { opacity: 0; transform: translateX(0); }
+  20% { opacity: 0.9; transform: translateX(20px); }
+  40% { opacity: 0.9; transform: translateX(-20px); }
+  60% { opacity: 0.9; transform: translateX(10px); }
+  80% { opacity: 0.9; transform: translateX(-10px); }
+  100% { opacity: 0; transform: translateX(0); }
+}
+
+.menu-container.new-page::before {
+  content: 'Swipe to navigate';
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 30px;
+  font-size: 16px;
+  font-weight: bold;
+  opacity: 0;
+  animation: swipeHint 2.5s ease-in-out;
+  pointer-events: none;
+  z-index: 10;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  border: 2px solid #F6B319;
+}
