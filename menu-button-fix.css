@@ -1,0 +1,63 @@
+/* Menu Button Positioning Fix */
+
+/* Override the menu button positioning */
+.menu-btn {
+  position: absolute;
+  bottom: 10%; /* Position from bottom instead of top */
+  left: 50%;
+  transform: translate(-50%, 0);
+  z-index: 10;
+  background: none;
+  border: none;
+  padding: 0;
+  box-shadow: none;
+}
+
+/* Style for the CLick.svg image */
+.click-button-img {
+  width: 100%;
+  max-width: 400px; /* Increased from 300px to make button bigger */
+  display: block;
+  filter: drop-shadow(0 4px 15px rgba(0, 0, 0, 0.2));
+  transition: transform 0.5s ease;
+}
+
+/* Override the hover effect to maintain the correct positioning */
+.menu-btn:hover .click-button-img {
+  transform: scale(1.05);
+}
+
+/* Ensure the hero section has proper positioning context */
+.hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* Center content vertically */
+  width: 100%;
+  height: auto;
+  margin: 0;
+  padding: 0;
+}
+
+/* Make sure the hero image takes full width and height and is edge to edge */
+.hero-img {
+  width: 100vw; /* Full viewport width */
+  height: calc(100vh - 120px); /* Full height minus marquee and bottom button */
+  object-fit: cover; /* Maintain aspect ratio while filling */
+  object-position: center; /* Center the image */
+  display: block;
+  border-radius: 0; /* Remove rounded corners to fill the frame */
+  margin: 0;
+  padding: 0;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 100vw;
+}
+
+/* Adjust bottom actions to ensure proper spacing */
+.bottom-actions {
+  margin-top: 0;
+  padding-top: 0;
+}
