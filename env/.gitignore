@@ -1,0 +1,10 @@
+# Static/Media
+staticfiles/*
+!staticfiles/.gitkeep
+media/*
+!media/.gitkeep
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class

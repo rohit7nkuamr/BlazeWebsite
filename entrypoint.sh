@@ -3,6 +3,9 @@
 # Default to port 8000 if PORT not set
 PORT="${PORT:-8000}"
 
+# Create static directories if they don't exist
+mkdir -p staticfiles media
+
 # Run migrations
 python manage.py migrate
 
