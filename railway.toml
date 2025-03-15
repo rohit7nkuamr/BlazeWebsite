@@ -4,5 +4,6 @@ dockerfilePath = "Dockerfile"
 
 [deploy]
 restartPolicyType = "ON_FAILURE"
-healthcheckPath = "/"
-healthcheckTimeout = 100
+healthcheckPath = "/admin/"
+healthcheckTimeout = 300
+startCommand = "./entrypoint.sh"
