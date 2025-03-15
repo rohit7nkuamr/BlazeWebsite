@@ -7,3 +7,4 @@ restartPolicyType = "ON_FAILURE"
 healthcheckPath = "/admin/"
 healthcheckTimeout = 300
 startCommand = "./entrypoint.sh"
+numReplicas = 1
