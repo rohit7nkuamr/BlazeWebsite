@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Mobile-friendly scaling -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blaze Web App - SPA</title>
+  <meta name="description" content="Blaze Restaurant - Flavours That Flirt. Gourmet burgers, wraps, pasta and more.">
+  <meta name="msapplication-navbutton-color" content="#9d1c20">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="#9d1c20">
+  <!-- Firefox and Opera use CSS-based theming instead of meta tags -->
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="assets/icons/icon-192x192.png">
+  <!-- Preload critical assets -->
+  <link rel="preload" href="styles.css" as="style">
+  <link rel="preload" href="dissolve-animations.css" as="style">
+  <link rel="preload" href="script.js" as="script">
+  <link rel="preload" href="dissolve-animation.js" as="script">
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="swipe-animations.css" />
+  <link rel="stylesheet" href="3d-animations.css" />
+  <link rel="stylesheet" href="menu-button-fix.css" />
+  <link rel="stylesheet" href="dissolve-animations.css" />
+  <link rel="stylesheet" href="loading-indicator.css" />
+  <link rel="stylesheet" href="browser-theme.css" />
+  <link rel="stylesheet" href="styles/contact.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="top-bar">
+    <!-- CLICKABLE LOGO (links to #home) -->
+    <a href="#home" class="logo-link">
+      <img data-src="assets/Blaze PNG 3.svg" alt="Blaze Logo" class="logo" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjOWQxYzIwIi8+PC9zdmc+" />
+    </a>
+
+    <!-- FLAVOURS THAT FLIRT in Beautiful Freak Bold -->
+    <h1 class="title">
+      <span class="dash">-</span>
+      <span class="gold-text">FLAVOURS</span>
+      <span class="black-text">THAT</span>
+      <span class="gold-text">FLIRT</span>
+      <span class="dash">-</span>
+    </h1>
+
+    <!-- HAMBURGER ICON -->
+    <div class="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </header>
+
+  <!-- SIDE NAVIGATION -->
+  <nav class="side-nav">
+    <ul>
+      <li><a href="#home">HOME</a></li>
+      <li><a href="#hours-location">HOURS &amp; LOCATION</a></li>
+      <li><a href="#about">ABOUT</a></li>
+      <li><a href="#order-online">ORDER ONLINE</a></li>
+      <li><a href="tel:+919711313434">(+91) 9711313434</a></li>
+      <li><a href="#contact">CONTACT</a></li>
+    </ul>
+    <hr />
+    <div class="nav-spacer"></div>
+    <div class="powered-by">POWERED BY TEAM RENT & RIDE</div>
+  </nav>
+
+  <!-- MARQUEE (SVG repeated for seamless infinite loop) -->
+  <div class="marquee-container">
+    <div class="marquee">
+      <img data-src="assets/moving_frame.svg" alt="Marquee" class="marquee-img" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjOWQxYzIwIi8+PC9zdmc+" />
+      <img data-src="assets/moving_frame.svg" alt="Marquee" class="marquee-img" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjOWQxYzIwIi8+PC9zdmc+" />
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT AREA (SPA partials load here) -->
+  <main id="app"></main>
+
+  <!-- App Shell Loading Indicator -->
+  <div id="loading-indicator">
+    <div class="loading-spinner"></div>
+  </div>
+  
+  <script src="script.js"></script>
+  <script src="3d-animation.js"></script>
+  <script src="dissolve-animation.js"></script>
+  <script src="js/contact-handler.js"></script>
+  
+  <noscript>
+    <div style="padding: 20px; text-align: center; background-color: #f8d7da; color: #721c24; margin: 20px;">
+      JavaScript is required to use this application. Please enable JavaScript in your browser settings.
+    </div>
+  </noscript>
+</body>
+</html>

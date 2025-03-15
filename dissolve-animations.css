@@ -1,0 +1,419 @@
+/* dissolve-animations.css - Dissolve animations for menu swiping */
+
+/* Base styles for menu container */
+.menu-container {
+  position: relative;
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* Menu SVG image */
+.menu-svg {
+  transition: transform 0.4s ease-out, opacity 0.4s ease-out;
+  transform-origin: center;
+}
+
+/* Dissolve animation classes */
+.dissolve-in {
+  animation: dissolveIn 0.5s ease-out forwards;
+}
+
+.dissolve-out {
+  animation: dissolveOut 0.5s ease-out forwards;
+}
+
+/* Next page animations (right to left swipe) */
+.dissolve-next-in {
+  animation: dissolveNextIn 0.5s ease-out forwards;
+}
+
+.dissolve-next-out {
+  animation: dissolveNextOut 0.5s ease-out forwards;
+}
+
+/* Previous page animations (left to right swipe) */
+.dissolve-prev-in {
+  animation: dissolvePrevIn 0.5s ease-out forwards;
+}
+
+.dissolve-prev-out {
+  animation: dissolvePrevOut 0.5s ease-out forwards;
+}
+
+/* Animation keyframes */
+@keyframes dissolveIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes dissolveOut {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+}
+
+/* Next page animations (right to left swipe) */
+@keyframes dissolveNextIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) translateX(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateX(0);
+  }
+}
+
+@keyframes dissolveNextOut {
+  0% {
+    opacity: 1;
+    transform: scale(1) translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.8) translateX(-50px);
+  }
+}
+
+/* Previous page animations (left to right swipe) */
+@keyframes dissolvePrevIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) translateX(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateX(0);
+  }
+}
+
+@keyframes dissolvePrevOut {
+  0% {
+    opacity: 1;
+    transform: scale(1) translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.8) translateX(50px);
+  }
+}
+
+/* Swipe indicator styles */
+.swipe-indicator {
+  position: absolute;
+  top: 50%;
+  width: 40px;
+  height: 40px;
+  background-color: rgba(157, 28, 32, 0.7); /* Blaze red with transparency */
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transform: translateY(-50%);
+  transition: opacity 0.3s ease;
+  z-index: 10;
+}
+
+.swipe-indicator:after {
+  content: '';
+  width: 12px;
+  height: 12px;
+  border-top: 3px solid #fff;
+  border-right: 3px solid #fff;
+  display: block;
+}
+
+.swipe-indicator-left {
+  left: 20px;
+}
+
+.swipe-indicator-left:after {
+  transform: rotate(-135deg);
+}
+
+.swipe-indicator-right {
+  right: 20px;
+}
+
+.swipe-indicator-right:after {
+  transform: rotate(45deg);
+}
+
+.swipe-indicator.visible {
+  opacity: 1;
+}
+
+/* Touch feedback styles */
+.menu-container.swipe-active-left .swipe-indicator-left,
+.menu-container.swipe-active-right .swipe-indicator-right {
+  opacity: 1;
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: translateY(-50%) scale(1);
+  }
+  50% {
+    transform: translateY(-50%) scale(1.1);
+  }
+  100% {
+    transform: translateY(-50%) scale(1);
+  }
+}
+
+/* First-time hint animation */
+.menu-container.new-page .swipe-indicator {
+  animation: hintPulse 2s ease-in-out 1s;
+}
+
+@keyframes hintPulse {
+  0% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* iPhone dock-like styling for horizontal navigation */
+.horizontal-nav {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.85);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+  border-bottom: 1px solid rgba(157, 28, 32, 0.2);
+  padding: 2px 0;
+  margin-bottom: 15px;
+}
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 12px 15px;
+  /* Add more resistance to scrolling */
+  scroll-snap-type: x mandatory;
+}
+
+/* Apply a class for cross-browser scrollbar hiding */
+.no-scrollbar {
+  /* IE and Edge */
+  -ms-overflow-style: none;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Use feature detection for Firefox */
+@supports (scrollbar-width: none) {
+  .no-scrollbar {
+    /* Firefox */
+    scrollbar-width: none;
+  }
+}
+
+.horizontal-nav-item {
+  white-space: nowrap;
+  padding: 12px 16px;
+  color: #333;
+  text-decoration: none;
+  font-weight: 600;
+  transition: transform 0.15s ease, color 0.2s ease, background-color 0.3s ease;
+  position: relative;
+  touch-action: pan-x;
+  -webkit-tap-highlight-color: transparent;
+  scroll-snap-align: center;
+  /* Add more weight to items */
+  min-width: 120px;
+  text-align: center;
+  font-size: 1.05em;
+  border-radius: 12px;
+}
+
+.horizontal-nav-item:hover {
+  color: #9d1c20;
+  background-color: rgba(157, 28, 32, 0.05);
+}
+
+.horizontal-nav-item:active {
+  transform: scale(0.95);
+  background-color: rgba(157, 28, 32, 0.1);
+}
+
+.horizontal-nav-item.active {
+  color: #9d1c20;
+  font-weight: 700;
+  background-color: rgba(157, 28, 32, 0.08);
+}
+
+.horizontal-nav-item.active::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40%;
+  height: 4px;
+  background-color: #9d1c20;
+  border-radius: 4px;
+  animation: navIndicatorPulse 2s infinite;
+}
+
+/* Navigation dots styling */
+.nav-dot {
+  display: inline-block;
+  color: #9d1c20; /* Blaze red color */
+  font-size: 20px;
+  margin: 0 10px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none;
+  transition: transform 0.2s ease, color 0.2s ease;
+  vertical-align: middle;
+  touch-action: pan-x;
+  -webkit-tap-highlight-color: transparent;
+  scroll-snap-align: center;
+  /* Add more weight to dots */
+  min-width: 20px;
+  text-align: center;
+  opacity: 0.7;
+}
+
+.nav-dot:hover {
+  transform: scale(1.5);
+  color: #d92b30; /* Lighter red on hover */
+  opacity: 1;
+}
+
+.nav-dot:active {
+  transform: scale(0.8);
+}
+
+/* Edge indicators for iPhone dock-like feel */
+.edge-indicator {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 40px;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.edge-indicator::after {
+  content: '';
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: rgba(157, 28, 32, 0.7);
+  box-shadow: 0 0 8px rgba(157, 28, 32, 0.5);
+}
+
+.edge-indicator.left {
+  left: 0;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0));
+}
+
+.edge-indicator.right {
+  right: 0;
+  background: linear-gradient(to left, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0));
+}
+
+.edge-indicator.visible {
+  opacity: 1;
+  animation: edgePulse 0.5s ease;
+}
+
+@keyframes edgePulse {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.8;
+  }
+}
+
+/* Scroll pulse animation for haptic feedback visual indicator */
+@keyframes scrollPulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.scroll-pulse {
+  animation: scrollPulse 0.3s ease-in-out;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .horizontal-nav-item {
+    padding: 10px 12px;
+    font-size: 0.95em;
+    min-width: 100px;
+  }
+  
+  .nav-dot {
+    margin: 0 6px;
+    font-size: 16px;
+  }
+  
+  .edge-indicator {
+    width: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .horizontal-nav-item {
+    padding: 8px 10px;
+    font-size: 0.9em;
+    min-width: 90px;
+  }
+  
+  .nav-dot {
+    margin: 0 4px;
+    font-size: 14px;
+  }
+  
+  .edge-indicator {
+    width: 25px;
+  }
+}

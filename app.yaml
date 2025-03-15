@@ -1,0 +1,11 @@
+name: blaze-website
+services:
+- name: web
+  github:
+    branch: main
+    repo: your-username/your-repo
+  envs:
+  - key: DJANGO_SETTINGS_MODULE
+    value: your_project.settings
+  - key: SECRET_KEY
+    value: your-secret-key

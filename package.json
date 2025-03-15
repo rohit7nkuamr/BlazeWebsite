@@ -1,0 +1,21 @@
+{
+  "name": "blaze-website",
+  "version": "1.0.0",
+  "description": "Blaze Website Server",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "start:secure": "node server-secure.js",
+    "mobile": "node server.js",
+    "mobile-server": "node mobile-server.js",
+    "dev": "nodemon server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "https-localhost": "^4.7.1",
+    "ip": "^2.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
+}

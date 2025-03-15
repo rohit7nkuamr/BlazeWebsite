@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="contact-form-container">
+    <h2 class="section-title">Contact Us</h2>
+    
+    {% if messages %}
+    <div class="message-container">
+        {% for message in messages %}
+        <div class="alert {% if message.tags == 'success' %}alert-success{% else %}alert-danger{% endif %} fade-in">
+            {{ message }}
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <form method="post" action="{% url 'contactform:submit_contact' %}" class="contact-form">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="{{ form.name.id_for_label }}">Name</label>
+            {{ form.name }}
+        </div>
+        <div class="form-group">
+            <label for="{{ form.email.id_for_label }}">Email</label>
+            {{ form.email }}
+        </div>
+        <div class="form-group">
+            <label for="{{ form.subject.id_for_label }}">Subject</label>
+            {{ form.subject }}
+        </div>
+        <div class="form-group">
+            <label for="{{ form.message.id_for_label }}">Message</label>
+            {{ form.message }}
+        </div>
+        <button type="submit" class="submit-btn">Send Message</button>
+    </form>
+</div>
+{% endblock %}
