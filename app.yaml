@@ -6,6 +6,6 @@ services:
     repo: your-username/your-repo
   envs:
   - key: DJANGO_SETTINGS_MODULE
-    value: your_project.settings
+    value: blaze_project.settings
   - key: SECRET_KEY
-    value: your-secret-key
+    value: your-secret-key...
