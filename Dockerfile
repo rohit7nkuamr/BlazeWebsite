@@ -7,4 +7,8 @@ RUN pip install -r requirements.txt
 
 COPY . .
 
-CMD ["gunicorn", "blaze.wsgi:application", "--bind", "0.0.0.0:8000"]
+# Add an entrypoint script
+COPY entrypoint.sh .
+RUN chmod +x entrypoint.sh
+
+ENTRYPOINT ["./entrypoint.sh"]
